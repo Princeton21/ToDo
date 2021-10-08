@@ -1,0 +1,2 @@
+(this.webpackJsonpprincetonapp=this.webpackJsonpprincetonapp||[]).push([[0],{10:function(t,n,e){"use strict";e.r(n);var c=e(1),r=e.n(c),o=e(3),i=e.n(o),s=(e(8),e(0));var p=function(){return Object(s.jsx)(s.Fragment,{children:Object(s.jsx)("todolist",{})})};i.a.render(Object(s.jsx)(r.a.StrictMode,{children:Object(s.jsx)(p,{})}),document.getElementById("root"))},8:function(t,n,e){}},[[10,1,2]]]);
+//# sourceMappingURL=main.bcb9c15c.chunk.js.map
