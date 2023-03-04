@@ -1,0 +1,6 @@
+.btn_flex{
+    width:15rem;
+    height:5rem;
+    display: flex;
+    flex-direction: row;
+}
