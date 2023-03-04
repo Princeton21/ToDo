@@ -1,13 +1,16 @@
 :root{
-    --custom-hue: 360;
-    --saturation: 57%;
-    --light:71%;
+    --custom-hue: 0;
+    --saturation: 0%;
+    --light:85%;
 }
-/* .container{ */
-    /* padding:2rem; */
-/* } */
+.container{ 
+    width:fit-content;
+   padding:5px; 
+}
 
 .btn{
+    display: contents;
+    width:fit-content;
     background-color: hsl(var(--custom-hue), var(--saturation), var(--light));
     border:none;
     padding:.5rem 1rem .5rem 1rem;
@@ -20,8 +23,8 @@
     box-shadow: 2px 2px 4px 1px hsl(0, 5%, 51%);
 }
 .btn:hover{
-    transform: translateY(-2px);
-    scale: 1.1;
+    transform: translateY(-1px);
+    scale: 1.03;
 }
 
 .icon{
