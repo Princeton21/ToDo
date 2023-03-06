@@ -1,0 +1,25 @@
+
+
+.task{
+    margin:.5rem;
+    padding:.5rem;
+    background:hsl(12,var(--saturation),var(--light));
+    background-color: hsl(60, 45%, 63%);
+    width:fit-content;
+    border-radius: 20px;
+    display:flex;
+    column-gap: 10px;
+}
+.text{
+    font-size: 12px;
+}
+.icons{
+    display: flex;
+    column-gap: 5px;
+}
+.icon{
+    transition:.3s ease;
+}
+.icon:hover{
+    transform:scale(1.1);
+}

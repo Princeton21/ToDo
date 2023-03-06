@@ -1,0 +1,23 @@
+.container{
+    padding:.5rem;
+    width: 35%;
+    background-color: hsl(60,60%,var(--light));
+    border-radius: 20px;
+}
+
+.header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    padding:.5rem 1rem .5rem 1rem;
+    margin-right:2rem;
+    background-color: hsl(60,45%,63%);
+    border-radius: 20px;
+    /* position: absolute;
+    top:0;
+    left:7rem;   */
+    align-self: center;
+}

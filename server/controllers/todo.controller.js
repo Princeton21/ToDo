@@ -6,8 +6,8 @@ const getTask= async (req, res) => {
 };
 
 const addTask = async (req, res) => {
-  const { task,color } = req.body;
-  TodoModel.create({ task, color }).then((data) => {
+  const { task } = req.body;
+  TodoModel.create({ task }).then((data) => {
     console.log("Added task to database");
     console.log(data);
     res.send(data);
@@ -15,9 +15,9 @@ const addTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-	const { _id, task ,color } = req.body;
+	const { _id, task } = req.body;
 	TodoModel
-		.findByIdAndUpdate(_id, { task ,color })
+		.findByIdAndUpdate(_id, { task })
 		.then((data) => {
 			console.log("Updated task in database");
 			console.log(data);

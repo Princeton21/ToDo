@@ -1,8 +1,4 @@
-:root{
-    --custom-hue: 0;
-    --saturation: 0%;
-    --light:85%;
-}
+
 .container{ 
     width:fit-content;
    padding:5px; 
@@ -23,8 +19,7 @@
     box-shadow: 2px 2px 4px 1px hsl(0, 5%, 51%);
 }
 .btn:hover{
-    transform: translateY(-1px);
-    scale: 1.03;
+    transform: translateY(-1px) scale(1.03);
 }
 
 .icon{

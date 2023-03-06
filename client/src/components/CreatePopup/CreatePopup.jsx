@@ -19,7 +19,7 @@ const CreatePopup = (props) => {
   const customLightColor = `hsl(${hue}, 100%, 90%)`;
 
   useEffect(() => {
-    console.log(hue);
+    // console.log(hue);
   }, [hue]);
   return (
     <>

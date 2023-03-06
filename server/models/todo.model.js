@@ -5,10 +5,6 @@ const todoSchema = new mongoose.Schema(
         task: {
             type: String,
             required: true,
-        },
-        color: {
-            type: Number,
-            required: true
         }
     }
 )

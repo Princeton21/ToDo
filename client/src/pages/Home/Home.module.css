@@ -1,3 +1,9 @@
+.dashboard{
+    position:fixed;
+    top:20px;
+    right:20px;
+}
+
 .container{
     width:100%;
     height:100vh;
@@ -22,8 +28,4 @@
 .btn_flex{
     display: flex;
     justify-content: center;
-}
-.btn_flex a{
-    text-decoration: none;
-    color: black;
 }

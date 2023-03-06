@@ -5,14 +5,12 @@ import CreatePopup from "../../components/CreatePopup/CreatePopup";
 import {FaTools} from "react-icons/fa";
 import {FaPlus} from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
+import {MdSpaceDashboard} from "react-icons/md";
 import styles from "./Home.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 const Home = () => {
   const [popupIsOpen, setpopupIsOpen] = useState(false); 
   const [dropdownIsOpen, setdropdownIsOpen] = useState(false);
-  const handleMenu = () => {
-    console.log("Menu");
-  }
 
   const toggleDropdown = () => {
     setdropdownIsOpen(!dropdownIsOpen)
@@ -24,20 +22,25 @@ const Home = () => {
 
 
   useEffect(() => {
-    console.log(dropdownIsOpen);
+    // console.log(dropdownIsOpen);
   })
 
   return (
     <>
+      <div className={styles.dashboard}>
+        <Button icon={MdSpaceDashboard}>
+          <Link to="/dashboard">Dashboard</Link>
+        </Button>
+      </div>
       <div className={styles.container}>
         <div className={styles.header}>Todo Checklist App</div>
         <div className={styles.btn_flex}>
-          <div className={styles.drop_flex}>       
-          <Button icon={HiMenu} onClick={toggleDropdown}>
-            Select a List
+          <div className={styles.drop_flex}>
+            <Button icon={HiMenu} onClick={toggleDropdown}>
+              Select a List
             </Button>
             <div className={styles.dropdown}>
-            {dropdownIsOpen && <Dropdown />}
+              {dropdownIsOpen && <Dropdown />}
             </div>
           </div>
           <Button icon={FaPlus} onClick={togglePopup}>

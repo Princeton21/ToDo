@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(routes);
+app.use("/api",routes);
 
 const port = process.env.PORT || 5000;
 

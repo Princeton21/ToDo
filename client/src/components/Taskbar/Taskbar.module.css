@@ -1,0 +1,22 @@
+.container{
+    padding:1rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:2rem;
+}
+
+.search_input {
+    width: 15rem;
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background: hsl(var(--custom-hue),var(--saturation),var(--light));
+    transition: 0.3s ease;
+    box-shadow: 2px 2px 4px 1px hsl(0, 5%, 51%);
+}
+
+.search_input:focus {
+    outline: none;
+    transform: translateY(-2px);
+}
