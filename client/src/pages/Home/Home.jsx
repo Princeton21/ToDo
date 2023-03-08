@@ -22,7 +22,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    // console.log(dropdownIsOpen);
+    // console.log(dropdownIsOpen);//
   })
 
   return (

@@ -10,22 +10,51 @@ const getAllTasks = (setTodolist) => {
         })
 }
 
-const addTask = (task, setText, setTodolist) => {
-
+const addTask = (task, setTask, setTodolist) => {
     axios
         .post(`${baseUrl}/add`, { task })
         .then((data) => {
             console.log(data);
-            setText("")
+            setTask("")
             getAllTasks(setTodolist)
         })
         .catch((err) => console.log(err))
 
 }
 
+const updateTask = (taskId, task, setTask, setIsUpdating,setTodolist) => {
+  axios
+    .put(`${baseUrl}/update`, { _id: taskId, task })
+      .then((data) => {
+          console.log(data);
+          setTask("");
+          setIsUpdating(false);
+          getAllTasks(setTodolist);
 
+    })
+    .catch((err) => console.log(err));
+};
 
+const completeTask = (taskId, setTodolist) => {
+    axios
+        .delete(`${baseUrl}/complete`, { data: { _id: taskId } })
+        .then((data) => {
+            console.log(data);
+            getAllTasks(setTodolist)
+        })
+        .catch((err) => console.log(err))
+}
+
+const deleteCompletedTasks = (taskId,setTodolist) => {
+    axios
+        .delete(`${baseUrl}/delete` , { data: { _id: taskId } })
+        .then((data) => {
+            console.log(data);
+            getAllTasks(setTodolist)// will try later to do optimistic updates rather than refetching all tasks
+        })
+        .catch((err) => console.log(err))
+}
 
 export {
-  getAllTasks,addTask
+  getAllTasks,addTask,updateTask,completeTask ,deleteCompletedTasks
 }

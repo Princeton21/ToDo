@@ -12,6 +12,9 @@ const addTask = async (req, res) => {
     console.log(data);
     res.send(data);
   });
+	// const newTodoModel = new TodoModel({ task });
+	// const addedTodo = await newTodoModel.save();
+	// res.json(addedTodo);
 };
 
 const updateTask = async (req, res) => {
@@ -29,7 +32,7 @@ const updateTask = async (req, res) => {
 		})	
 }
 
-const deleteTask = async (req, res) => {
+const completeTask = async (req, res) => {
 	const { _id } = req.body;
 	TodoModel
 		.findByIdAndDelete(_id)
@@ -44,4 +47,19 @@ const deleteTask = async (req, res) => {
 		})
 }
 
-export { getTask, addTask, updateTask, deleteTask };
+const deleteCompletedTasks = async (req, res) => {
+	const { _id } = req.body;
+	TodoModel
+		.findByIdAndDelete(_id)
+		.then((data) => {
+			console.log("Deleted task from database");
+			console.log(data);
+			res.send("Deleted task from database");
+		}
+	)	
+		.catch((err) => {
+			console.log(err);
+		})
+}
+
+export { getTask, addTask, updateTask, completeTask , deleteCompletedTasks};

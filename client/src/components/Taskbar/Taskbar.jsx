@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import styles from "./Taskbar.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
-import { addTask } from "../../utils/HandleApi";
+import { addTask, updateTask } from "../../utils/HandleApi";
 
-const Taskbar = ({ todolist }) => {
+const Taskbar = ({ setTodolist, isUpdating, setIsUpdating, taskId }) => {
   const [task, setTask] = useState("");
 
-    const handleAddTask = (e) => {
-        e.preventDefault();
-        addTask(task, setTask, todolist);
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    // addTask(task, setTask, setTodolist);
+    if (isUpdating) {
+      updateTask(taskId, task, setTask, setIsUpdating, setTodolist);
+    } else {
+      addTask(task, setTask, setTodolist);
+      setTask("");
+    }
   };
 
   const handleTaskChange = (e) => {
@@ -25,10 +31,8 @@ const Taskbar = ({ todolist }) => {
           value={task}
           onChange={handleTaskChange}
         />
-        <Button icon={AiOutlinePlus} onClick={handleAddTask}>
-          Add
-        </Button>
-      </form >
+        <Button icon={AiOutlinePlus}>{isUpdating ? "Update" : "Add"}</Button>
+      </form>
     </>
   );
 };
