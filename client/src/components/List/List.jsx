@@ -16,7 +16,7 @@ const List = (props) => {
   
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} style={{backgroundColor:`hsl(${props.color}, 45%, 63%)`}}>
         <div className={styles.header}>
           <Button icon={BsChevronDown} color={60}>
             {props.count}

@@ -6,6 +6,11 @@ const todoSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        // tasks: {        
+        //     type: Array,
+        //     default: [],
+        // }
+
         // isCompleted: {
         //     type: Boolean,
         //     default: false,
@@ -13,4 +18,6 @@ const todoSchema = new mongoose.Schema(
     }
 )
 
-export default mongoose.model('Todo', todoSchema);
+const TodoModel = mongoose.model('Todo', todoSchema);
+
+export default TodoModel;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Taskbar.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
-import { addTask, updateTask } from "../../utils/HandleApi";
+import { addTask, updateTask } from "../../utils/HandleTodoApis";
 
 const Taskbar = ({ setTodolist, isUpdating, setIsUpdating, taskId }) => {
   const [task, setTask] = useState("");

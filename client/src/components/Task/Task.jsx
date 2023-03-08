@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsCheck2All } from "react-icons/bs";
 import styles from "./Task.module.css";
-import { completeTask, deleteCompletedTasks } from "../../utils/HandleApi";
+import { completeTask, deleteCompletedTasks } from "../../utils/HandleTodoApis";
 const Task = ({ taskId, task, setTodolist,setTaskId, handleUpdateTask }) => {
   const handleCompleteTask = () => {
     console.log(taskId);

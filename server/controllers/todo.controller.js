@@ -56,10 +56,29 @@ const deleteCompletedTasks = async (req, res) => {
 			console.log(data);
 			res.send("Deleted task from database");
 		}
-	)	
+	)
 		.catch((err) => {
 			console.log(err);
 		})
 }
+
+// const deleteCompletedTasks = async (req, res) => {
+// 	const { _id } = req.params;
+// 	TodoModel
+// 		.findByIdAndDelete(_id)
+// 		.then((data) => {
+// 			console.log("Deleted task from database");
+// 			console.log(data);
+// 			res.send("Deleted task from database");
+// 		}
+// 	)
+// 		.catch((err) => {
+// 			console.log(err);
+// 		})
+// }
+
+
+
+
 
 export { getTask, addTask, updateTask, completeTask , deleteCompletedTasks};

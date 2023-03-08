@@ -8,7 +8,12 @@ import { HiMenu } from "react-icons/hi";
 import {MdSpaceDashboard} from "react-icons/md";
 import styles from "./Home.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import { getAllLists } from "../../utils/HandleListApis";
 const Home = () => {
+  const [listArray, setListArray] = useState([]);
+  
+
+
   const [popupIsOpen, setpopupIsOpen] = useState(false); 
   const [dropdownIsOpen, setdropdownIsOpen] = useState(false);
 
@@ -23,7 +28,8 @@ const Home = () => {
 
   useEffect(() => {
     // console.log(dropdownIsOpen);//
-  })
+    getAllLists(setListArray);
+  }, []);
 
   return (
     <>
@@ -40,7 +46,7 @@ const Home = () => {
               Select a List
             </Button>
             <div className={styles.dropdown}>
-              {dropdownIsOpen && <Dropdown />}
+              {dropdownIsOpen && <Dropdown listArray={listArray}/>}
             </div>
           </div>
           <Button icon={FaPlus} onClick={togglePopup}>
@@ -52,6 +58,17 @@ const Home = () => {
         </div>
         <CreatePopup isOpen={popupIsOpen} togglePopup={togglePopup} />
       </div>
+      {/* {
+        listArray.map((list,index) => {
+          return (
+            <div className={styles.list_container} key={index}>
+              <div className={styles.list_title}>{list.title}</div>
+              <div className={styles.list_desc}>{list.color}</div>
+            </div>
+          )
+        }
+      )} */}
+      
     </>
   );
 };

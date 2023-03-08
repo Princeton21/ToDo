@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import List from "../../components/List/List";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Taskbar from "../../components/Taskbar/Taskbar";
-import { getAllTasks } from "../../utils/HandleApi";
+import { getAllTasks } from "../../utils/HandleTodoApis";
 
 const Manage = () => {
   const [todolist, setTodolist] = useState([]);
