@@ -12,14 +12,14 @@ const getAllLists = (setListArray) => {
     .catch((err) => console.log(err));
 };
 
-const addList = (list, setList, setListArray) => {
+const createList = (title,color, setList, setListArray) => {
   axios
-    .post(baseUrl, { list })
+    .post(baseUrl, { title,color })
     .then((data) => {
       console.log(data);
       setList("");
       getAllLists(setListArray);
-    })
+    }) 
     .catch((err) => console.log(err));
 };
 
@@ -46,4 +46,4 @@ const updateList = (taskId, task, setTask, setIsUpdating, setTodolist) => {
 };
 
 
-export { getAllLists, addList, deleteList, updateList };
+export { getAllLists, createList, deleteList, updateList };

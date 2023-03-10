@@ -29,7 +29,7 @@ const Home = () => {
   useEffect(() => {
     // console.log(dropdownIsOpen);//
     getAllLists(setListArray);
-  }, []);
+  }, [dropdownIsOpen, popupIsOpen]);
 
   return (
     <>

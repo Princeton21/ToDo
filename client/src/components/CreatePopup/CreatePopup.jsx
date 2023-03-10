@@ -3,18 +3,14 @@ import styles from "./CreatePopup.module.css";
 import { IoCloseSharp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
-import { addList } from "../../utils/HandleListApis";
+import { createList} from "../../utils/HandleListApis";
 
 const CreatePopup = (props) => {
   const [hue, setHue] = useState(180);
   const { isOpen, togglePopup } = props;
   const popupRef = useRef(null);
   const [listArray, setListArray] = useState([]);
-  const [list, setList] = useState({
-    title: "",
-    color: "",
-    tasks: [],
-  })
+  const [list, setList] = useState("")
 
   const handleHueChange = (event) => {
     setHue(event.target.value);
@@ -27,32 +23,46 @@ const CreatePopup = (props) => {
   const customMediumColor = `hsl(${hue}, 50%, 61%)`;
   const customLightColor = `hsl(${hue}, 100%, 90%)`;
 
-  const handleAddList = () => {
-    addList(list, setList, setListArray);
+  const handleCreateList = async (e) => {
+    e.preventDefault();
+    try {
+      await createList(list,hue, setList, setListArray);
+      togglePopup();
+    } catch (err) {
+      console.log(err);
+    }
   }
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        togglePopup();
+        togglePopup(); 
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
     // console.log(hue)
-  }, [hue, togglePopup, popupRef]);
+  }, [hue, togglePopup, popupRef,listArray]);
   return (
     <>
       {isOpen && (
         <div className={styles.main_body}>
           <div>
-            <div className={styles.container} ref={popupRef}>
+            <form
+              className={styles.container}
+              ref={popupRef}
+              onSubmit={handleCreateList}
+            >
               <div className={styles.close} onClick={togglePopup}>
                 <IoCloseSharp />
               </div>
               <div className={styles.list_name}>
-                List Name : <input type="text" className={styles.list_input} />
+                List Name : <input
+                  type="text"
+                  value={list}
+                  className={styles.list_input}
+                  onChange={(e) => setList(e.target.value)}
+                />
               </div>
               <div className={styles.choose_color}>
                 Choose Color :{" "}
@@ -80,9 +90,8 @@ const CreatePopup = (props) => {
               </div>
               <Button
                 icon={AiOutlinePlus}
-                onClick={handleAddList}
               >Add</Button>
-            </div>
+            </form>
           </div>
         </div>
       )}

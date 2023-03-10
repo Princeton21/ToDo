@@ -6,6 +6,7 @@ import "dotenv/config.js";
 import todoRoutes from "./routes/todo.routes.js";
 import listRoutes from "./routes/list.routes.js";
 import connectDB from "./config/db.js";
+import mongoose from "mongoose";
 
 const app = express();
 app.use(express.json());
@@ -14,8 +15,11 @@ app.use(express.json());
 //Connect to DB
 connectDB();
 
+
+ 
+
 //Middlewares
-app.use(morgan("dev"));
+app.use(morgan("dev")); 
 app.use(bodyParser.json());
 app.use(cors());
 

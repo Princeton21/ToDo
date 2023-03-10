@@ -5,10 +5,26 @@
 }
 
 .list_container {
-    display: flex;
-    flex-direction: column;
-    column-gap: 5%;
+
+    display: grid;
+    /* add one row when viewing on the phone */
+    grid-template-columns: 1fr 1fr 1fr;
+
+    row-gap: 2rem;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .list_container {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .list_container {
+        grid-template-columns: 1fr 1fr;
+    }
 }

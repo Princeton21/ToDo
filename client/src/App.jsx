@@ -20,12 +20,8 @@ function App() {
       {loading ? (
         <Loading />
       ) : (
-        <>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/manage" element={<Manage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
+          <>
+            <Home/>
         </>
       )}
     </>

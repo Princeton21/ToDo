@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Manage.module.css";
-import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import { getAllLists } from "../../utils/HandleListApis";
 import List from "../../components/List/List";
 import { RiArrowGoBackFill } from "react-icons/ri";
-import Taskbar from "../../components/Taskbar/Taskbar";
-import { getAllTasks } from "../../utils/HandleTodoApis";
-
+import Button from "../../components/Button/Button";
+import styles from "./Manage.module.css";
 const Manage = () => {
-  const [todolist, setTodolist] = useState([]);
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [task, setTask] = useState("");
-  const [taskId, setTaskId] = useState("");
+  const [listArray, setListArray] = useState([
+    {
+      _id: "",
+      title: "",
+      color: 0,
+    },
+  ]);
   useEffect(() => {
-    getAllTasks(setTodolist);
-    // console.log(task, taskId)
-  },[]);
-
+    getAllLists(setListArray);
+  }, []);
   return (
     <>
       <div className={styles.back}>
@@ -25,23 +24,15 @@ const Manage = () => {
         </Button>
       </div>
       <div className={styles.list_container}>
-        <Taskbar
-          setTodolist={setTodolist}
-          isUpdating={isUpdating}
-          setIsUpdating={setIsUpdating}
-          taskId={taskId}
-        />
-        <List
-          todolist={todolist}
-          count={todolist.length}
-          setTodolist={setTodolist}
-          isUpdating={isUpdating}
-          setIsUpdating={setIsUpdating}
-          task={task}
-          setTask={setTask}
-          taskId={taskId}
-          setTaskId={setTaskId}
-        />
+        {listArray.map((list) => {
+          return (
+            <div key={list._id} className={styles.list}>
+              {/* <Link to={`/list/${list._id}`}> */}
+              <List title={list.title} color={list.color} isButtonThere={false} />
+              {/* </Link> */}
+            </div>
+          );
+        })}
       </div>
     </>
   );

@@ -1,29 +1,23 @@
 import React from "react";
 import styles from "./Dropdown.module.css";
 // import { Todo } from "../../data/Todo.js";
+import { Link } from "react-router-dom";
 const Dropdown = ({listArray}) => {
-  const dropdownMenu = (Todo) => {
-    return listArray.map((items, index) => {
-      return (
-        <>
-          <div className={styles.item_container}>
-            <li className={styles.item} key={index}>
-              {items.title}
-            </li>
-          </div>
-        </>
-      );
-    });
-  };
   return (
     <>
       <div className={styles.container}>
-        {/* {dropdownMenu(listArray)} */}
-        {listArray.map((items) => {
+        {listArray.map((list) => {
           return (
             <>
-              <div className={styles.item_container} key={items.id}>
-                <li className={styles.item}>{items.title}</li>
+              <div
+                key={list._id}
+                className={styles.item}
+                style={{
+                  backgroundColor: `hsl(${list.color}, 50%, 61%)`,
+                  border: `4px solid hsl(${list.color}, 100%, 30%)`,
+                }}
+              >
+                <Link to={`/list/${list._id}`}>{list.title}</Link>
               </div>
             </>
           );
