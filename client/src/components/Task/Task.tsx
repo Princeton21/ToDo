@@ -3,12 +3,22 @@ import { BiEdit } from "react-icons/bi";
 import { BsCheck2All } from "react-icons/bs";
 import styles from "./Task.module.css";
 import { completeTask, deleteCompletedTasks } from "../../utils/HandleTodoApis";
-const Task = ({ taskId, task, setTodolist,setTaskId, handleUpdateTask }) => {
-  const handleCompleteTask = () => {
+
+interface TaskProps {
+  taskId: string;
+  task: string;
+  setTodolist: React.Dispatch<React.SetStateAction<[]>>;
+  setTaskId: React.Dispatch<React.SetStateAction<string>>;
+  handleUpdateTask: () => void;
+}
+
+
+const Task = ({ taskId, task, setTodolist,setTaskId, handleUpdateTask }: TaskProps) => {
+  const   handleCompleteTask = () => {
     console.log(taskId);
-    // completeTask(taskId,setTodolist);
-    deleteCompletedTasks(taskId, setTodolist);
-    // setTaskId(task.filter((item) => item._id !== taskId));
+    completeTask({taskId,setTodolist});
+    // deleteCompletedTasks({taskId, setTodolist});
+    setTaskId(taskId);
   };
   return (
     <div className={styles.task}>

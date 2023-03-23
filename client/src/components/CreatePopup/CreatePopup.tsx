@@ -5,15 +5,16 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
 import { createList} from "../../utils/HandleListApis";
 
-const CreatePopup = (props) => {
+const CreatePopup = (props:any) => {
   const [hue, setHue] = useState(180);
   const { isOpen, togglePopup } = props;
-  const popupRef = useRef(null);
+  const popupRef = useRef<HTMLFormElement>(null);
   const [listArray, setListArray] = useState([]);
   const [list, setList] = useState("")
-
-  const handleHueChange = (event) => {
-    setHue(event.target.value);
+  const [title, setTitle] = useState("");
+  const [color,setColor] = useState(0);
+  const handleHueChange = (e:any) => {
+    setHue(e.target.value);
   };
 
   //Dark Saturation= 100%, Light = 30%
@@ -23,10 +24,12 @@ const CreatePopup = (props) => {
   const customMediumColor = `hsl(${hue}, 50%, 61%)`;
   const customLightColor = `hsl(${hue}, 100%, 90%)`;
 
-  const handleCreateList = async (e) => {
+  const handleCreateList = async (e:any) => {
     e.preventDefault();
     try {
-      await createList(list,hue, setList, setListArray);
+      setTitle(list);
+      setColor(hue);
+      await createList({title,color, setList, setListArray});
       togglePopup();
     } catch (err) {
       console.log(err);
@@ -34,8 +37,8 @@ const CreatePopup = (props) => {
   }
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
+    const handleClickOutside = (e:any) => {
+      if (popupRef.current && !popupRef.current.contains(e.target)) {
         togglePopup(); 
       }
     };

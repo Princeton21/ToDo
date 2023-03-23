@@ -8,16 +8,30 @@ import Taskbar from "../../components/Taskbar/Taskbar";
 import { getAllTasks } from "../../utils/HandleTodoApis";
 
 const MainList = () => {
-  const [todolist, setTodolist] = useState([]);
+  const [todolist, setTodolist] = useState([
+    {
+      task: "",
+    }
+  ]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [task, setTask] = useState("");
   const [taskId, setTaskId] = useState("");
   const { listId } = useParams();
+  const [color, setColor] = useState(0);
 
+  
   useEffect(() => {
-    getAllTasks(setTodolist);
+    getAllTasks({setTodolist});
     // console.log(task, taskId)
-    console.log(listId);
+    console.log({
+      todolist,
+      isUpdating,
+      setIsUpdating,
+      task,
+      setTask,
+      taskId,
+      setTaskId,
+    });
   }, []);
 
   return (
@@ -35,9 +49,10 @@ const MainList = () => {
           taskId={taskId}
         />
         <List
-          // isButtonThere={}
-          todolist={todolist}
+          title="Tasks" 
+          isButtonThere={false}
           count={todolist.length}
+          todolist={todolist}
           setTodolist={setTodolist}
           isUpdating={isUpdating}
           setIsUpdating={setIsUpdating}
@@ -45,6 +60,7 @@ const MainList = () => {
           setTask={setTask}
           taskId={taskId}
           setTaskId={setTaskId}
+          color={0}
         />
       </div>
     </>

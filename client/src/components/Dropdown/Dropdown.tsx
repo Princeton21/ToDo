@@ -2,11 +2,15 @@ import React from "react";
 import styles from "./Dropdown.module.css";
 // import { Todo } from "../../data/Todo.js";
 import { Link } from "react-router-dom";
-const Dropdown = ({listArray}) => {
+
+interface DropdownProps {
+  listArray: any;
+}
+const Dropdown = ({ listArray }:DropdownProps) => {
   return (
     <>
       <div className={styles.container}>
-        {listArray.map((list) => {
+        {listArray.map((list:any) => {
           return (
             <>
               <div

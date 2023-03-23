@@ -1,8 +1,9 @@
 import axios from "axios";
+import { List, GetAllListsParams, CreateListParams, DeleteListParams, UpdateListParams } from './ListInterfaces';
 
 const baseUrl = "http://localhost:8080/api/list";
 
-const getAllLists = (setListArray) => {
+const getAllLists = ({setListArray}:GetAllListsParams) => {
   axios
     .get(baseUrl)
     .then(({data}) => {
@@ -12,28 +13,28 @@ const getAllLists = (setListArray) => {
     .catch((err) => console.log(err));
 };
 
-const createList = (title,color, setList, setListArray) => {
+const createList = ({title, color, setList, setListArray}: CreateListParams) => {
   axios
     .post(baseUrl, { title,color })
     .then((data) => {
       console.log(data);
       setList("");
-      getAllLists(setListArray);
+      getAllLists({setListArray});
     }) 
     .catch((err) => console.log(err));
 };
 
-const deleteList = (listId, setListArray) => {
+const deleteList = ({listId, setListArray}:DeleteListParams) => {
   axios
-    .delete(`${baseUrl}/${listId}`, { data: { _id: taskId } })
+    .delete(`${baseUrl}/${listId}`, { data: { _id: listId } })
     .then((data) => {
       console.log(data);
-      getAllLists(setListArray);
+      getAllLists({setListArray});
     })
     .catch((err) => console.log(err));
 };
 
-const updateList = (taskId, task, setTask, setIsUpdating, setTodolist) => {
+const updateList = ({taskId, task, setTask, setIsUpdating, setTodolist ,getAll}: UpdateListParams) => {
   axios
     .put(baseUrl, { _id: taskId, task })
     .then((data) => {

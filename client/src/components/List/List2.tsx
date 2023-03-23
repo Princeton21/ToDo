@@ -3,20 +3,34 @@ import Button from "../Button/Button";
 import Task from "../Task/Task";
 import styles from "./List.module.css";
 import { BsChevronDown, BsChevronBarUp } from "react-icons/bs";
-const List = (props) => {
+
+interface ListProps {
+  isButtonThere: boolean;
+  count: number;
+  color: number;
+  title: string;
+}
+
+const List2 = ({
+
+  color,
+  isButtonThere,
+  count,
+  title,
+}: ListProps) => {
   const [isListOpen, setIsListOpen] = useState(false);
   const toggleList = () => {
-    setIsListOpen(!isListOpen);
+    // setIsListOpen(!isListOpen);
   };
 
-  const handleUpdateTask = (_id, task) => {
-    props.setIsUpdating(true);
-    props.setTask(task);
-    props.setTaskId(_id);
-    // console.log(props.task, props.taskId);
-  };
+//   const handleUpdateTask = (_id: any, task: any) => {
+//     setIsUpdating(true);
+//     setTask(task);
+//     setTaskId(_id);
+//     // console.log(task, taskId);
+//   };
 
-  const taskItems = props.todolist;
+//   const taskItems = todolist;    
 
   return (
     <>
@@ -24,41 +38,41 @@ const List = (props) => {
         className={styles.container}
         style={{
           width: isListOpen ? undefined : "max-content",
-          backgroundColor: `hsl(${props.color}, 100%, 90%)`,
+          backgroundColor: `hsl(${color}, 100%, 90%)`,
         }}
       >
         <div className={styles.header}>
-          {props.isButtonThere && (
+          {isButtonThere && (
             <Button
               icon={isListOpen ? BsChevronDown : BsChevronBarUp}
-              color={props.color}
+              color={color}
               onClick={toggleList}
             >
-              {props.count}
+              {count}
             </Button>
           )}
           <div
             className={styles.title}
             style={{
-              backgroundColor: `hsl(${props.color}, 45%, 63%)`,
+              backgroundColor: `hsl(${color}, 45%, 63%)`,
             }}
           >
-            {props.title}
+            {title}
           </div>
         </div>
         <div
           className={styles.list_items}
           style={isListOpen ? { display: "block" } : { display: "none" }}
         >
-          {/* {Array.isArray(props.todolist) &&
-            taskItems.map((item) => {
+          {/* {Array.isArray(todolist) &&
+            taskItems.map((item: any) => {
               return (
                 <Task
                   key={item._id}
                   taskId={item._id}
-                  setTaskId={props.setTaskId}
+                  setTaskId={setTaskId}
                   task={item.task}
-                  setTodolist={props.setTodolist}
+                  setTodolist={setTodolist}
                   handleUpdateTask={() => {
                     handleUpdateTask(item._id, item.task);
                   }}
@@ -71,4 +85,4 @@ const List = (props) => {
   );
 };
 
-export default List;
+export default List2;

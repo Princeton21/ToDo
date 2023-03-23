@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllLists } from "../../utils/HandleListApis";
-import List from "../../components/List/List";
+import List2 from "../../components/List/List2";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
 import styles from "./Manage.module.css";
@@ -11,10 +11,11 @@ const Manage = () => {
       _id: "",
       title: "",
       color: 0,
+      tasks: [],
     },
   ]);
   useEffect(() => {
-    getAllLists(setListArray);
+    getAllLists({ setListArray });
   }, []);
   return (
     <>
@@ -24,15 +25,22 @@ const Manage = () => {
         </Button>
       </div>
       <div className={styles.list_container}>
-        {listArray.map((list) => {
-          return (
-            <div key={list._id} className={styles.list}>
-              {/* <Link to={`/list/${list._id}`}> */}
-              <List title={list.title} color={list.color} isButtonThere={false} />
-              {/* </Link> */}
-            </div>
-          );
-        })}
+        {listArray &&
+          listArray.length > 0 &&
+          listArray.map((list) => {
+            return (
+              <div key={list._id} className={styles.list}>
+                {/* <Link to={`/list/${list._id}`}> */}
+                <List2
+                  title={list.title}
+                  color={list.color}
+                  isButtonThere={false}
+                  count={list.tasks.length}
+                />
+                {/* </Link> */}
+              </div>
+            );
+          })}
       </div>
     </>
   );

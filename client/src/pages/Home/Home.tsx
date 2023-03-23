@@ -10,7 +10,12 @@ import styles from "./Home.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { getAllLists } from "../../utils/HandleListApis";
 const Home = () => {
-  const [listArray, setListArray] = useState([]);
+  const [listArray, setListArray] = useState([{
+    _id: "",
+    title: "",
+    color: 0,
+    tasks: []
+  }]);
   
 
 
@@ -25,10 +30,9 @@ const Home = () => {
     setpopupIsOpen(!popupIsOpen)
   }
 
-
   useEffect(() => {
     // console.log(dropdownIsOpen);//
-    getAllLists(setListArray);
+    getAllLists({setListArray});
   }, [dropdownIsOpen, popupIsOpen]);
 
   return (

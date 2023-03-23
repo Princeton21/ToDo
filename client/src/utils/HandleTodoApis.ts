@@ -1,8 +1,9 @@
 import axios from 'axios'
+import {GetAllTasksParams, AddTaskParams, UpdateTaskParams, CompleteTaskParams, DeleteCompletedTasksParams } from './TodoInterfaces'
 
 const baseUrl = "http://localhost:8080/api";
 
-const getAllTasks = (setTodolist) => {
+const getAllTasks = ({setTodolist}:GetAllTasksParams) => {
     axios
         .get(baseUrl)
         .then(({ data }) => {
@@ -10,7 +11,7 @@ const getAllTasks = (setTodolist) => {
         })
 }
 
-const addTask = (task, setTask, setTodolist) => {
+const addTask = ({task, setTask, setTodolist}:AddTaskParams) => {
     axios
         .post(`${baseUrl}/add`, { task })
         .then((data) => {
@@ -22,7 +23,8 @@ const addTask = (task, setTask, setTodolist) => {
 
 }
 
-const updateTask = (taskId, task, setTask, setIsUpdating,setTodolist) => {
+
+const updateTask = ({taskId, task, setTask, setIsUpdating,setTodolist}: UpdateTaskParams) => {
   axios
     .put(`${baseUrl}/update`, { _id: taskId, task })
       .then((data) => {
@@ -35,7 +37,7 @@ const updateTask = (taskId, task, setTask, setIsUpdating,setTodolist) => {
     .catch((err) => console.log(err));
 };
 
-const completeTask = (taskId, setTodolist) => {
+const completeTask = ({taskId, setTodolist}:CompleteTaskParams) => {
     axios
         .delete(`${baseUrl}/complete`, { data: { _id: taskId } })
         .then((data) => {
@@ -45,7 +47,7 @@ const completeTask = (taskId, setTodolist) => {
         .catch((err) => console.log(err))
 }
 
-const deleteCompletedTasks = (taskId,setTodolist) => {
+const deleteCompletedTasks = ({taskId, setTodolist}:DeleteCompletedTasksParams) => {
     axios
         .delete(`${baseUrl}/delete` , { data: { _id: taskId } })
         .then((data) => {

@@ -7,4 +7,4 @@ router.post("/add", addTask);
 router.put("/update", updateTask);
 router.delete("/complete", completeTask);
 router.delete("/delete", deleteCompletedTasks)
-export default router; 
+export default router;
