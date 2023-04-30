@@ -1,35 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
+import { Provider } from "react-redux";
 import "./index.css";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Manage from "./pages/Manage/Manage";
-import MainList from "./pages/MainList/MainList";
+import router from "./routes";
+import store from "./store/store";
+import { RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/list/:listId",
-    element: <MainList />,
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "/manage",
-    element: <Manage />,
-  },
-]);
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 ReactDOM.createRoot(document.getElementById("root")!)?.render(
   <React.StrictMode>
-    <div className="page">
-      <RouterProvider router={router} />
-    </div>
+    <Provider store={store}>
+      <div className="page">
+        <RouterProvider router={router} />
+      </div>
+    </Provider>
   </React.StrictMode>
 );

@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
-import styles from "./MainList.module.css";
+import { getAllTasks } from "../../services/todoService";
+import { Link, useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import { Link,useParams } from "react-router-dom";
-import List from "../../components/List/List";
 import { RiArrowGoBackFill } from "react-icons/ri";
+import List from "../../components/List/List";
 import Taskbar from "../../components/Taskbar/Taskbar";
-import { getAllTasks } from "../../utils/HandleTodoApis";
-
+import styles from "./MainList.module.css";
+import { useSelector ,useDispatch } from "react-redux";
 const MainList = () => {
+
+  const dispatch = useDispatch();
+  const { listId } = useParams();
+  
+
   const [todolist, setTodolist] = useState([
     {
       task: "",
-    }
+    },
   ]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [task, setTask] = useState("");
   const [taskId, setTaskId] = useState("");
-  const { listId } = useParams();
   const [color, setColor] = useState(0);
 
-  
   useEffect(() => {
-    getAllTasks({setTodolist});
+    getAllTasks({ setTodolist });
     // console.log(task, taskId)
     console.log({
       todolist,
@@ -49,7 +52,7 @@ const MainList = () => {
           taskId={taskId}
         />
         <List
-          title="Tasks" 
+          title="Tasks"
           isButtonThere={false}
           count={todolist.length}
           todolist={todolist}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsCheck2All } from "react-icons/bs";
 import styles from "./Task.module.css";
-import { completeTask, deleteCompletedTasks } from "../../utils/HandleTodoApis";
+import { completeTask, deleteCompletedTasks } from "../../services/todoService";
 
 interface TaskProps {
   taskId: string;
@@ -12,11 +12,16 @@ interface TaskProps {
   handleUpdateTask: () => void;
 }
 
-
-const Task = ({ taskId, task, setTodolist,setTaskId, handleUpdateTask }: TaskProps) => {
-  const   handleCompleteTask = () => {
+const Task = ({
+  taskId,
+  task,
+  setTodolist,
+  setTaskId,
+  handleUpdateTask,
+}: TaskProps) => {
+  const handleCompleteTask = () => {
     console.log(taskId);
-    completeTask({taskId,setTodolist});
+    completeTask({ taskId, setTodolist });
     // deleteCompletedTasks({taskId, setTodolist});
     setTaskId(taskId);
   };

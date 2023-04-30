@@ -3,17 +3,22 @@ import styles from "./CreatePopup.module.css";
 import { IoCloseSharp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
-import { createList} from "../../utils/HandleListApis";
+import { createList } from "../../services/listService";
 
-const CreatePopup = (props:any) => {
+const CreatePopup = (props: any) => {
   const [hue, setHue] = useState(180);
   const { isOpen, togglePopup } = props;
   const popupRef = useRef<HTMLFormElement>(null);
-  const [listArray, setListArray] = useState([]);
-  const [list, setList] = useState("")
+  const [listArray, setListArray] = useState([{
+    _id: "",
+    title: "",
+    color: 0,
+    tasks: [],
+  }]);
+  const [list, setList] = useState("");
   const [title, setTitle] = useState("");
-  const [color,setColor] = useState(0);
-  const handleHueChange = (e:any) => {
+  const [color, setColor] = useState(0);
+  const handleHueChange = (e: any) => {
     setHue(e.target.value);
   };
 
@@ -24,28 +29,28 @@ const CreatePopup = (props:any) => {
   const customMediumColor = `hsl(${hue}, 50%, 61%)`;
   const customLightColor = `hsl(${hue}, 100%, 90%)`;
 
-  const handleCreateList = async (e:any) => {
+  const handleCreateList = async (e: any) => {
     e.preventDefault();
     try {
       setTitle(list);
       setColor(hue);
-      await createList({title,color, setList, setListArray});
+      await createList({ title, color, setList, setListArray });
       togglePopup();
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
-    const handleClickOutside = (e:any) => {
+    const handleClickOutside = (e: any) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
-        togglePopup(); 
+        togglePopup();
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
     // console.log(hue)
-  }, [hue, togglePopup, popupRef,listArray]);
+  }, [hue, togglePopup, popupRef, listArray]);
   return (
     <>
       {isOpen && (
@@ -60,20 +65,22 @@ const CreatePopup = (props:any) => {
                 <IoCloseSharp />
               </div>
               <div className={styles.list_name}>
-                List Name : <input
+                List Name :{" "}
+                <input
                   type="text"
                   value={list}
                   className={styles.list_input}
                   onChange={(e) => setList(e.target.value)}
                 />
               </div>
-              <div className={styles.choose_color}>
+              <div>
                 Choose Color :{" "}
                 <input
                   type="range"
                   min="0"
                   max="360"
                   value={hue}
+                  className={styles.color_input}
                   onChange={handleHueChange}
                 />
               </div>
@@ -91,9 +98,7 @@ const CreatePopup = (props:any) => {
                   style={{ backgroundColor: customLightColor }}
                 ></div>
               </div>
-              <Button
-                icon={AiOutlinePlus}
-              >Add</Button>
+              <Button icon={AiOutlinePlus}>Add</Button>
             </form>
           </div>
         </div>

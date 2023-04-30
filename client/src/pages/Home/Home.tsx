@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import CreatePopup from "../../components/CreatePopup/CreatePopup";
-import {FaTools} from "react-icons/fa";
-import {FaPlus} from "react-icons/fa";
+import { FaTools } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
-import {MdSpaceDashboard} from "react-icons/md";
+import { MdSpaceDashboard } from "react-icons/md";
 import styles from "./Home.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { getAllLists } from "../../utils/HandleListApis";
+import { getAllLists } from "../../services/listService";
 const Home = () => {
-  const [listArray, setListArray] = useState([{
-    _id: "",
-    title: "",
-    color: 0,
-    tasks: []
-  }]);
-  
+  const [listArray, setListArray] = useState([
+    {
+      _id: "",
+      title: "",
+      color: 0,
+      tasks: [],
+    },
+  ]);
 
-
-  const [popupIsOpen, setpopupIsOpen] = useState(false); 
+  const [popupIsOpen, setpopupIsOpen] = useState(false);
   const [dropdownIsOpen, setdropdownIsOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setdropdownIsOpen(!dropdownIsOpen)
-  }
+    setdropdownIsOpen(!dropdownIsOpen);
+  };
 
   const togglePopup = () => {
-    setpopupIsOpen(!popupIsOpen)
-  }
+    setpopupIsOpen(!popupIsOpen);
+  };
 
   useEffect(() => {
     // console.log(dropdownIsOpen);//
-    getAllLists({setListArray});
+    getAllLists({ setListArray });
   }, [dropdownIsOpen, popupIsOpen]);
 
   return (
@@ -50,7 +50,7 @@ const Home = () => {
               Select a List
             </Button>
             <div className={styles.dropdown}>
-              {dropdownIsOpen && <Dropdown listArray={listArray}/>}
+              {dropdownIsOpen && <Dropdown listArray={listArray} />}
             </div>
           </div>
           <Button icon={FaPlus} onClick={togglePopup}>
@@ -72,7 +72,6 @@ const Home = () => {
           )
         }
       )} */}
-      
     </>
   );
 };

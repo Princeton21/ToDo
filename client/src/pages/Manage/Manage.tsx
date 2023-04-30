@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllLists } from "../../utils/HandleListApis";
+import { getAllLists } from "../../services/listService";
 import List2 from "../../components/List/List2";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
