@@ -19,28 +19,30 @@ const Manage = () => {
   }, []);
   return (
     <>
-      <div className={styles.back}>
-        <Button icon={RiArrowGoBackFill}>
-          <Link to="/">Go Back</Link>
-        </Button>
-      </div>
-      <div className={styles.list_container}>
-        {listArray &&
-          listArray.length > 0 &&
-          listArray.map((list) => {
-            return (
-              <div key={list._id} className={styles.list}>
-                {/* <Link to={`/list/${list._id}`}> */}
-                <List2
-                  title={list.title}
-                  color={list.color}
-                  isButtonThere={false}
-                  count={list.tasks.length}
-                />
-                {/* </Link> */}
-              </div>
-            );
-          })}
+      <div className={styles.flexContainer}>
+        <div className={styles.back}>
+          <Button icon={RiArrowGoBackFill}>
+            <Link to="/">Go Back</Link>
+          </Button>
+        </div>
+        <div className={styles.listContainer}>
+          {listArray &&
+            listArray.length > 0 &&
+            listArray.map((list) => {
+              return (
+                <div key={list._id} className={styles.list}>
+                  {/* <Link to={`/list/${list._id}`}> */}
+                  <List2
+                    title={list.title}
+                    color={list.color}
+                    isButtonThere={false}
+                    count={list.tasks.length}
+                  />
+                  {/* </Link> */}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </>
   );

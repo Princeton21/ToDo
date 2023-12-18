@@ -30,11 +30,13 @@ const CreatePopup = (props: any) => {
   const customLightColor = `hsl(${hue}, 100%, 90%)`;
 
   const handleCreateList = async (e: any) => {
+  console.log(list, hue);
+  
     e.preventDefault();
     try {
       setTitle(list);
       setColor(hue);
-      await createList({ title, color, setList, setListArray });
+      await createList({ title: list, color:hue, setList, setListArray });
       togglePopup();
     } catch (err) {
       console.log(err);

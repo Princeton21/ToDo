@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use("/api",todoRoutes);
-app.use("/api",listRoutes) 
+app.use("/api/todo",todoRoutes);
+app.use("/api/list",listRoutes) 
 
 const port = process.env.PORT || 5000;
 

@@ -2,8 +2,7 @@ import App from "./App";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Manage from "./pages/Manage/Manage";
 import MainList from "./pages/MainList/MainList";
-import { createBrowserRouter } from "react-router-dom";
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <App />,
@@ -20,6 +19,6 @@ const router = createBrowserRouter([
     path: "/manage",
     element: <Manage />,
   },
-]);
+];
 
-export default router;
+export default routes;

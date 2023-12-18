@@ -8,16 +8,8 @@ import { HiMenu } from "react-icons/hi";
 import { MdSpaceDashboard } from "react-icons/md";
 import styles from "./Home.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { getAllLists } from "../../services/listService";
+// import { getAllLists } from "../../services/listService";
 const Home = () => {
-  const [listArray, setListArray] = useState([
-    {
-      _id: "",
-      title: "",
-      color: 0,
-      tasks: [],
-    },
-  ]);
 
   const [popupIsOpen, setpopupIsOpen] = useState(false);
   const [dropdownIsOpen, setdropdownIsOpen] = useState(false);
@@ -30,10 +22,10 @@ const Home = () => {
     setpopupIsOpen(!popupIsOpen);
   };
 
-  useEffect(() => {
-    // console.log(dropdownIsOpen);//
-    getAllLists({ setListArray });
-  }, [dropdownIsOpen, popupIsOpen]);
+  // useEffect(() => {
+  //   // console.log(dropdownIsOpen);//
+  //   getAllLists({ setListArray });
+  // }, [dropdownIsOpen, popupIsOpen]);
 
   return (
     <>
@@ -50,7 +42,7 @@ const Home = () => {
               Select a List
             </Button>
             <div className={styles.dropdown}>
-              {dropdownIsOpen && <Dropdown listArray={listArray} />}
+              {dropdownIsOpen && <Dropdown />}
             </div>
           </div>
           <Button icon={FaPlus} onClick={togglePopup}>

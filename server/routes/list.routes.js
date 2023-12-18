@@ -8,10 +8,10 @@ import {
 
 const router = Router();
 
-router.get("/list", getLists);
-router.get("/list/:listId", getList);
-router.post("/list", createList);
-// router.put("/list", updateList);
-router.delete("/list/:listId", deleteList);
+router.get("/", getLists);
+router.get("/:listId", getList);
+router.post("/", createList);
+// router.put("/", updateList);
+router.delete("/:listId", deleteList);
 
 export default router;

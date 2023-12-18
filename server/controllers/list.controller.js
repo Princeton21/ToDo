@@ -1,5 +1,6 @@
 import listModel from "../models/list.model.js";
 
+
 const getLists = async (req, res) => {
   const lists = await listModel.find();
   res.json(lists);

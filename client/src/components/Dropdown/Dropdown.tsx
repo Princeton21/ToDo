@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Dropdown.module.css";
 // import { Todo } from "../../data/Todo.js";
 import { Link } from "react-router-dom";
+import { getAllLists } from "../../services/listService";
 
-interface DropdownProps {
-  listArray: any;
-}
-const Dropdown = ({ listArray }:DropdownProps) => {
+const Dropdown = () => {
+  const [listArray, setListArray] = useState([
+    {
+      _id: "",
+      title: "",
+      color: 0,
+      tasks: [],
+    },
+  ]);
+  
+  useEffect(() => {
+    getAllLists({ setListArray });
+  }, [listArray]);
+  
   return (
-    <>
       <div className={styles.container}>
         {listArray.map((list:any) => {
           return (
-            <>
               <div
                 key={list._id}
                 className={styles.item}
@@ -23,11 +32,9 @@ const Dropdown = ({ listArray }:DropdownProps) => {
               >
                 <Link to={`/list/${list._id}`}>{list.title}</Link>
               </div>
-            </>
           );
         })}
       </div>
-    </>
   );
 };
 
