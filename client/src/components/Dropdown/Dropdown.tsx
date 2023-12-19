@@ -16,7 +16,7 @@ const Dropdown = () => {
   
   useEffect(() => {
     getAllLists({ setListArray });
-  }, [listArray]);
+  }, []);
   
   return (
       <div className={styles.container}>

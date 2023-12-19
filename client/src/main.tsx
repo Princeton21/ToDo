@@ -8,6 +8,7 @@ import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 
 store.subscribe(() => {
   console.log(store.getState());
+});
 
 
 ReactDOM.createRoot(document.getElementById("root")!)?.render(

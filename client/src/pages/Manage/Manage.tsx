@@ -31,14 +31,14 @@ const Manage = () => {
             listArray.map((list) => {
               return (
                 <div key={list._id} className={styles.list}>
-                  {/* <Link to={`/list/${list._id}`}> */}
+                  <Link to={`/list/${list._id}`}>
                   <List2
                     title={list.title}
                     color={list.color}
                     isButtonThere={false}
                     count={list.tasks.length}
                   />
-                  {/* </Link> */}
+                  </Link>
                 </div>
               );
             })}
