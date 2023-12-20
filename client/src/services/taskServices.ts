@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {GetAllTasksParams, AddTaskParams, UpdateTaskParams, CompleteTaskParams, DeleteCompletedTasksParams } from '../types/task'
 
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "http://localhost:8080/api/lists";
 
 const getAllTasks = ({setTodolist}:GetAllTasksParams) => {
     axios

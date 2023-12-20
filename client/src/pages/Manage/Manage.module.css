@@ -17,6 +17,32 @@
     place-items: center;
     padding: 5rem 2rem 2rem 0rem;
 }
+.subContainer{
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.list {
+    position: relative;
+    flex-grow:1;
+}
+
+.deleteButton {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease 2s, visibility 0.3s ease 2s;
+    
+}
+
+.subContainer:hover .deleteButton {
+    opacity: 1;
+    visibility: visible;
+    animation: slideInLeft 0.5s forwards, shake 0.5s 2s infinite;
+}
 
 @media only screen and (max-width: 768px) {
     .list_container {
@@ -29,3 +55,37 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ListState, GetAllListsParams, CreateListParams, DeleteListParams, UpdateListParams } from '../types/list';
 
-const baseUrl = "http://localhost:8080/api/list";
+const baseUrl = "http://localhost:8080/api/lists";
 
 const getAllLists = ({setListArray}:GetAllListsParams) => {
   axios
@@ -24,12 +24,12 @@ const createList = ({title, color, setList, setListArray}: CreateListParams) => 
     .catch((err) => console.log(err));
 };
 
-const deleteList = ({listId, setListArray}:DeleteListParams) => {
+const deleteList = ({listId}:DeleteListParams) => {
   axios
     .delete(`${baseUrl}/${listId}`, { data: { _id: listId } })
     .then((data) => {
       console.log(data);
-      getAllLists({setListArray});
+      // getAllLists({setListArray});
     })
     .catch((err) => console.log(err));
 };
@@ -45,6 +45,5 @@ const updateList = ({taskId, task, setTask, setIsUpdating, setTodolist ,getAll}:
     })
     .catch((err) => console.log(err));
 };
-
 
 export { getAllLists, createList, deleteList, updateList };

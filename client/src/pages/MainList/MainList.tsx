@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getAllTasks } from "../../services/todoService";
+import { getAllTasks } from "../../services/taskServices";
 import { Link, useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import List from "../../components/List/List";
 import Taskbar from "../../components/Taskbar/Taskbar";
-import { useSelector ,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./MainList.module.css";
 const MainList = () => {
-
   const dispatch = useDispatch();
   const { listId } = useParams();
-  
 
   const [todolist, setTodolist] = useState([
     {

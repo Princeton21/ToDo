@@ -16,7 +16,7 @@
     flex-direction: row;
     cursor: pointer;
     transition: .3s ease;
-    box-shadow: 2px 2px 4px 1px hsl(0, 5%, 51%);
+    /* box-shadow: 2px 2px 4px 1px hsl(0, 5%, 51%); */
 }
 .btn:hover{
     transform: translateY(-1px) scale(1.03);

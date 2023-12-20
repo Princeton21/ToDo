@@ -20,8 +20,7 @@ export interface CreateListParams {
 
 export interface DeleteListParams {
     listId: string;
-    setListArray: Dispatch<SetStateAction<{ _id: string; title: string; color: number; tasks: never[]; }[]>>
-
+    // setListArray: Dispatch<SetStateAction<{ _id: string; title: string; color: number; tasks: never[]; }[]>>
 }
 
 export interface UpdateListParams {

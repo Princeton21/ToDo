@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Taskbar.module.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import Button from "../Button/Button";
-import { addTask, updateTask } from "../../services/todoService";
+import { addTask, updateTask } from "../../services/taskServices";
 import { Dispatch, SetStateAction } from "react";
 
 interface TaskbarProps {

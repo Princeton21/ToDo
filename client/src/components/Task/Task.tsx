@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsCheck2All } from "react-icons/bs";
 import styles from "./Task.module.css";
-import { completeTask, deleteCompletedTasks } from "../../services/todoService";
+import {
+  completeTask,
+  deleteCompletedTasks,
+} from "../../services/taskServices";
 
 interface TaskProps {
   taskId: string;

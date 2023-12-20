@@ -5,32 +5,26 @@ import styles from "./List.module.css";
 import { BsChevronDown, BsChevronBarUp } from "react-icons/bs";
 
 interface ListProps {
-  isButtonThere: boolean;
+  isButton: boolean;
   count: number;
   color: number;
   title: string;
 }
 
-const List2 = ({
-
-  color,
-  isButtonThere,
-  count,
-  title,
-}: ListProps) => {
+const List2 = ({ color, isButton, count, title }: ListProps) => {
   const [isListOpen, setIsListOpen] = useState(false);
   const toggleList = () => {
     // setIsListOpen(!isListOpen);
   };
 
-//   const handleUpdateTask = (_id: any, task: any) => {
-//     setIsUpdating(true);
-//     setTask(task);
-//     setTaskId(_id);
-//     // console.log(task, taskId);
-//   };
+  //   const handleUpdateTask = (_id: any, task: any) => {
+  //     setIsUpdating(true);
+  //     setTask(task);
+  //     setTaskId(_id);
+  //     // console.log(task, taskId);
+  //   };
 
-//   const taskItems = todolist;    
+  //   const taskItems = todolist;
 
   return (
     <>
@@ -42,7 +36,7 @@ const List2 = ({
         }}
       >
         <div className={styles.header}>
-          {isButtonThere && (
+          {isButton && (
             <Button
               icon={isListOpen ? BsChevronDown : BsChevronBarUp}
               color={color}
